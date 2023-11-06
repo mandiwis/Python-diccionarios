@@ -18,14 +18,17 @@ async def on_ready():
 
 @bot.command(name="meme")
 async def meme(ctx):
+    print("command = meme")
     await ctx.send(file=gen_meme())
 
 @bot.command(name="nintendo")
 async def nintendo(ctx):
+    print("command = nintendo")
     await ctx.send(gen_nintendo())
 
 @bot.command(name="highlow")
 async def highlow(ctx):
+    print("command = highlow")
     numeros = [1,2,3,4,5,6,7,8,9,10]
     num1 = numeros.pop(random.randint(0,9))
     num2 = random.choice(numeros)
@@ -42,7 +45,7 @@ async def highlow(ctx):
     try:
         guess = await bot.wait_for('message', check=is_correct, timeout=10.0)
     except asyncio.TimeoutError:
-        return ctx.send(f'Te demoraste mucho. El número era {num2}.')
+        return await ctx.send(f'Te demoraste mucho. El número era {num2}.')
 
     if guess.content == "mayor" and num2 > num1:
         await ctx.send(f'¡Adivinaste! El segundo número era {num2}')
@@ -52,4 +55,4 @@ async def highlow(ctx):
         await ctx.send(f'Te equivocaste... El segundo número era {num2} :cry: :sob: :sob:.')
 
 
-bot.run("TOKEN")
+bot.run("MTE2MDU5MTYyMjQyMjE0MzAzNg.GV3eYS.50EVY8-om6Nl-WZV5gJ86AyyeRd-EIK73SY4CQ")
